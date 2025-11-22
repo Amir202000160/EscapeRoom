@@ -77,5 +77,12 @@ public class Cam : MonoBehaviour
                 currentlyGrabbedObject = null;
             }
         }
+        void onDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(ray);
+        }
+
     }
+    
 }

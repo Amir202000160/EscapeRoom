@@ -6,7 +6,7 @@ public class Move : MonoBehaviour
     Rigidbody RB;
     InputAction moveAction;
      [SerializeField] Transform cam; 
-       [SerializeField] float speed = 10f;   
+  
     void Start()
     {
           moveAction = InputSystem.actions.FindAction("Move");
@@ -34,7 +34,7 @@ public class Move : MonoBehaviour
         Vector3 moveDirection = (cameraForward * moveValue.z + cameraRight * moveValue.x);
 
         // Apply force
-        RB.AddForce(moveDirection * speed * Time.deltaTime, ForceMode.VelocityChange);
+        RB.AddForce(moveDirection * 4000f * Time.deltaTime, ForceMode.VelocityChange);
 
     }
 }
