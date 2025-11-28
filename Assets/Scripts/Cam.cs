@@ -55,7 +55,7 @@ public class Cam : MonoBehaviour
             if(fireAction.IsPressed())
             {
            Debug.Log("Hit" + hitInfo.collider.gameObject.name);
-           if (hitInfo.collider.CompareTag("Grabbable"))
+           if (hitInfo.collider.tag==hitInfo.collider.name)
             {
                 currentlyGrabbedObject = hitInfo.transform;
                 Vector3 targetPosition = ray.GetPoint(10f);

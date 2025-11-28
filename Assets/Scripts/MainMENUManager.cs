@@ -14,8 +14,8 @@ public class MainMENUManager : MonoBehaviour
     [SerializeField] Image LoadingBAR;
 
     [Header("Scenes to Load")]
-    [SerializeField] private string _persistentGmaePlay = "PlayerPersistent";
-    [SerializeField] private string _levelScene = "EscapRoom1";
+    [SerializeField] private SceneField _persistentGmaePlay;
+    [SerializeField] private SceneField _levelScene;
 
     private List<AsyncOperation> _SceneToLoad = new List<AsyncOperation>();
 
