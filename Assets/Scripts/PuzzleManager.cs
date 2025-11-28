@@ -7,7 +7,7 @@ public class PuzzleManager : MonoBehaviour
     public PressurePlate[] plates; // Drag all 3 black planes here
 
     [Header("Win Effects")]
-    public GameObject cube;
+    public GameObject[] Objects;
  
 
     public void CheckForWin()
@@ -32,9 +32,12 @@ public class PuzzleManager : MonoBehaviour
         // Example: Change the text on the wall
         
         // Example: Play a particle effect
-        if (cube != null)
+        if (Objects != null)
         {
-            cube.SetActive(true);
+           foreach (GameObject obj in Objects)
+           {
+               obj.SetActive(true); 
+            }
         }
     }
 }

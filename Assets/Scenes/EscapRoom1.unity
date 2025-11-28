@@ -1714,7 +1714,8 @@ MonoBehaviour:
   - {fileID: 386670780}
   - {fileID: 377824571}
   - {fileID: 1611382012}
-  cube: {fileID: 1753829894}
+  Objects:
+  - {fileID: 1753829894}
 --- !u!4 &1401947558
 Transform:
   m_ObjectHideFlags: 0
