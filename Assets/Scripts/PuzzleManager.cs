@@ -8,7 +8,8 @@ public class PuzzleManager : MonoBehaviour
 
     [Header("Win Effects")]
     public GameObject[] Objects;
- 
+    public Animator doorAnimator; // Animator for the door
+
 
     public void CheckForWin()
     {
@@ -30,14 +31,16 @@ public class PuzzleManager : MonoBehaviour
         Debug.Log("YOU WIN!");
 
         // Example: Change the text on the wall
-        
+
         // Example: Play a particle effect
         if (Objects != null)
         {
-           foreach (GameObject obj in Objects)
-           {
-               obj.SetActive(true); 
+            foreach (GameObject obj in Objects)
+            {
+                obj.SetActive(true);
             }
         }
+
+        doorAnimator.SetBool("IsOpenDoor", true);
     }
 }
