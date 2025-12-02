@@ -7,20 +7,12 @@ public class SceneLoadTrigger : MonoBehaviour
     private GameObject Player;
     [SerializeField] private SceneField[] sceneToLoad;
     [SerializeField] private SceneField[] sceneToUnLoad;
+    public Animator doorAnimation;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Player)
@@ -28,6 +20,15 @@ public class SceneLoadTrigger : MonoBehaviour
             Debug.Log("Player Entered Trigger");
             LoadScenes();
             UnLoadScenes();
+            
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == Player)
+        {
+            Debug.Log("Player Exited Trigger");
+            doorAnimation.SetBool("IsOpenDoor", false);
         }
     }
 

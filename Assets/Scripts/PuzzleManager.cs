@@ -5,10 +5,11 @@ public class PuzzleManager : MonoBehaviour
 {
     [Header("Puzzle Components")]
     public PressurePlate[] plates; // Drag all 3 black planes here
-
+     
     [Header("Win Effects")]
     public GameObject[] Objects;
     public Animator doorAnimator; // Animator for the door
+    public SceneLoadTrigger sceneLoadTrigger; 
 
 
     public void CheckForWin()
@@ -26,7 +27,7 @@ public class PuzzleManager : MonoBehaviour
         WinGame();
     }
 
-    void WinGame()
+    void WinGame()  
     {
         Debug.Log("YOU WIN!");
 
@@ -42,5 +43,7 @@ public class PuzzleManager : MonoBehaviour
         }
 
         doorAnimator.SetBool("IsOpenDoor", true);
+        sceneLoadTrigger.LoadScenes();
+        sceneLoadTrigger.UnLoadScenes();
     }
 }

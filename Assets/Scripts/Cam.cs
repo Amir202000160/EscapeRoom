@@ -52,31 +52,22 @@ public class Cam : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);   
         if(Physics.Raycast(ray, out RaycastHit hitInfo, 10f, Enemylayer))
         {
-            if(fireAction.IsPressed())
+           if(fireAction.IsPressed() && hitInfo.collider.tag == hitInfo.collider.name)
             {
-           Debug.Log("Hit" + hitInfo.collider.gameObject.name);
-           if (hitInfo.collider.tag==hitInfo.collider.name)
-            {
+                Debug.Log("Hit" + hitInfo.collider.gameObject.name);
                 currentlyGrabbedObject = hitInfo.transform;
-                Vector3 targetPosition = ray.GetPoint(10f);
+                Vector3 targetPosition = ray.GetPoint(2.1f);
                 currentlyGrabbedObject.position = targetPosition;
-                // Optional: Disable its Rigidbody/Collider while dragging to prevent issues
-                // Example: currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
-                // Example: currentlyGrabbedObject.GetComponent<Collider>().enabled = false;
+                currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
             }
-           
-           }
-        }
-        else
-        {
-            if (currentlyGrabbedObject != null)
+            else
             {
-                // Optional: Re-enable its Rigidbody/Collider when released
-                // Example: currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                // Example: currentlyGrabbedObject.GetComponent<Collider>().enabled = true;
-                currentlyGrabbedObject = null;
+                currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
             }
+       
+        
         }
+       
         void onDrawGizmos()
         {
             Gizmos.color = Color.red;
