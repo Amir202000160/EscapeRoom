@@ -12,7 +12,7 @@ public class SceneLoadTrigger : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
-   
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Player)
@@ -20,7 +20,7 @@ public class SceneLoadTrigger : MonoBehaviour
             Debug.Log("Player Entered Trigger");
             LoadScenes();
             UnLoadScenes();
-            
+
         }
     }
     private void OnTriggerExit(Collider other)
