@@ -1445,7 +1445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cf4da8fdc9758b6408d84becd45d869f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cf4da8fdc9758b6408d84becd45d869f, type: 3}
       propertyPath: m_TagString
@@ -3965,7 +3965,7 @@ MonoBehaviour:
   - {fileID: 377824571}
   - {fileID: 1611382012}
   Objects:
-  - {fileID: 8871421534209878164}
+  - {fileID: 1702419848}
   doorAnimator: {fileID: 1981865540}
   sceneLoadTrigger: {fileID: 9124027444175336678}
 --- !u!4 &1401947558
@@ -5846,17 +5846,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 909900638856462158, guid: ecc77ea3a8ea72844aab4d3fad2c4bf4, type: 3}
   m_PrefabInstance: {fileID: 8173370072022872077}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8871421534209878164 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5531161829906913367, guid: afd86c5ddf2d493499a0a46f15c72574, type: 3}
-  m_PrefabInstance: {fileID: 4050365329581763710}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9124027444175336678 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3894288717210244002, guid: afd86c5ddf2d493499a0a46f15c72574, type: 3}
   m_PrefabInstance: {fileID: 4050365329581763710}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8871421534209878164}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2d800f975255f44943f95c9e384e18, type: 3}

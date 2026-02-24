@@ -42,8 +42,8 @@ public class PuzzleManager : MonoBehaviour
             }
         }
 
-       // doorAnimator.SetBool("IsOpenDoor", true);
-        /*sceneLoadTrigger.LoadScenes();
-        sceneLoadTrigger.UnLoadScenes();*/
+        // doorAnimator.SetBool("IsOpenDoor", true);
+        sceneLoadTrigger.LoadScenes();
+        sceneLoadTrigger.UnLoadScenes();
     }
 }

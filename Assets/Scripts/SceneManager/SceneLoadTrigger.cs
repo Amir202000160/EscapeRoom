@@ -15,11 +15,12 @@ public class SceneLoadTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == Player)
+        if (other.gameObject.CompareTag("Key"))
         {
             Debug.Log("Player Entered Trigger");
-            LoadScenes();
-            UnLoadScenes();
+            //LoadScenes();
+            //UnLoadScenes();
+            doorAnimation.SetBool("IsOpenDoor", true);
 
         }
     }
