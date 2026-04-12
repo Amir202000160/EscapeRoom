@@ -168,9 +168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1733614676}
   mouseSenstivity: 7
-  Enemylayer:
-    serializedVersion: 2
-    m_Bits: 1
   angle: 0
 --- !u!114 &470652685
 MonoBehaviour:
@@ -290,7 +287,7 @@ GameObject:
   - component: {fileID: 1733614678}
   - component: {fileID: 1733614677}
   m_Layer: 0
-  m_Name: Plaer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,6 +306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 470652683}
+  moveSpeed: 20
+  maxVelocity: 100
 --- !u!54 &1733614678
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -335,7 +334,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &1733614679
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -406,6 +405,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1733614681
 MeshFilter:

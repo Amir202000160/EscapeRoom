@@ -8,7 +8,7 @@ public class Cam : MonoBehaviour
 {
     [SerializeField] GameObject Player;
     [SerializeField] float mouseSenstivity ;
-   [SerializeField] LayerMask Enemylayer;
+   //SerializeField] LayerMask Enemylayer;
     InputAction LookAction;
     InputAction fireAction;
     [HideInInspector]
@@ -16,20 +16,27 @@ public class Cam : MonoBehaviour
     float xRotate;
     Ray ray;
     private Transform currentlyGrabbedObject = null;
-    
 
-    
+
+
     void Start()
     {
         LookAction = InputSystem.actions.FindAction("Mouse");
         fireAction = InputSystem.actions.FindAction("Attack");
-        UnityEngine.Cursor.visible =false;
-        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        MousueLocked();
     }
 
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
+        if(Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            UnMousueLocked();
+        }
+        if(Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            MousueLocked();
+        }
         Vector2 LookValue = LookAction.ReadValue<Vector2>() *mouseSenstivity * Time.deltaTime;
         float xRotate = -LookValue.y;   
         //xRotate = Mathf.Clamp(xRotate, -900f, 900f);
@@ -50,7 +57,7 @@ public class Cam : MonoBehaviour
     public void raycast()
     {
         Ray ray = new Ray(transform.position, transform.forward);   
-        if(Physics.Raycast(ray, out RaycastHit hitInfo, 10f, Enemylayer))
+        if(Physics.Raycast(ray, out RaycastHit hitInfo, 10f))
         {
            if(fireAction.IsPressed() && hitInfo.collider.tag == hitInfo.collider.name)
             {
@@ -62,7 +69,8 @@ public class Cam : MonoBehaviour
             }
             else
             {
-                currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                if(currentlyGrabbedObject != null)
+                    currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
             }
        
         
@@ -75,5 +83,14 @@ public class Cam : MonoBehaviour
         }
 
     }
-    
+    public void MousueLocked()
+    {
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        //UnityEngine.Cursor.visible = false;
+    }
+    public void UnMousueLocked()
+    {
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        //UnityEngine.Cursor.visible = true;
+    }
 }
