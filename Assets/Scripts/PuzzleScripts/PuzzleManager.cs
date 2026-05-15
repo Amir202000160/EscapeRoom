@@ -14,26 +14,19 @@ public class PuzzleManager : MonoBehaviour
 
     public void CheckForWin()
     {
-        // Loop through all plates to see if any are FALSE
         foreach (PressurePlate plate in plates)
         {
             if (plate.isActivated == false)
             {
-                return; // Stop checking, the puzzle isn't done yet
+                return; 
             }
         }
-
-        // If we didn't return above, that means ALL plates are true!
-        WinGame();
+ WinGame();
     }
 
     void WinGame()  
     {
         Debug.Log("YOU WIN!");
-
-        // Example: Change the text on the wall
-
-        // Example: Play a particle effect
         if (Objects != null)
         {
             foreach (GameObject obj in Objects)
@@ -42,7 +35,7 @@ public class PuzzleManager : MonoBehaviour
             }
         }
 
-        // doorAnimator.SetBool("IsOpenDoor", true);
+        
         sceneLoadTrigger.LoadScenes();
         sceneLoadTrigger.UnLoadScenes();
     }

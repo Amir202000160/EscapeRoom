@@ -17,7 +17,7 @@ public class SceneLoadTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Key"))
         {
-            Debug.Log("Player Entered Trigger");
+            Debug.Log("keyt opened the door Trigger");
             //LoadScenes();
             //UnLoadScenes();
             doorAnimation.SetBool("IsOpenDoor", true);

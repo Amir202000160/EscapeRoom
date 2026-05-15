@@ -16,7 +16,7 @@ public class PressurePlate : MonoBehaviour
     void Start()
     {
         // Find the manager in the scene automatically
-        manager = FindObjectOfType<PuzzleManager>();
+        manager = Object.FindFirstObjectByType<PuzzleManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,13 +26,13 @@ public class PressurePlate : MonoBehaviour
         {
             isActivated = true;
             Debug.Log(gameObject.name + " Activated!");
-            manager.CheckForWin(); // Tell manager to check if we won
+            manager.CheckForWin(); 
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // If the correct cube leaves, deactivate this plate
+        
         if (other.CompareTag(requiredTag))
         {
             isActivated = false;

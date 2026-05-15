@@ -7,8 +7,7 @@ using UnityEngine.UIElements;
 public class Cam : MonoBehaviour
 {
     [SerializeField] GameObject Player;
-    [SerializeField] float mouseSenstivity ;
-   //SerializeField] LayerMask Enemylayer;
+    [SerializeField] float mouseSenstivity;
     InputAction LookAction;
     InputAction fireAction;
     [HideInInspector]
