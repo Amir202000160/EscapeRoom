@@ -16,6 +16,8 @@ TagManager:
   - D
   - M
   - Key
+  - X
+  - O
   layers:
   - Default
   - TransparentFX
