@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
@@ -15,16 +16,45 @@ public class Cam : MonoBehaviour
     float xRotate;
     Ray ray;
     private Transform currentlyGrabbedObject = null;
+    
 
-
-
-    void Start()
+    private void OnEnable()
     {
         LookAction = InputSystem.actions.FindAction("Mouse");
         fireAction = InputSystem.actions.FindAction("Attack");
         MousueLocked();
+        fireAction.performed +=ButtonClicked; 
+        fireAction.canceled += ButtonReleased;
     }
+    private void OnDisable()
+    {
+        fireAction.performed -= ButtonClicked;
+        fireAction.canceled -= ButtonReleased;
+    }   
 
+    public void ButtonClicked(InputAction.CallbackContext context)
+    {
+        OnHold();
+    }
+    
+    public void ButtonReleased(InputAction.CallbackContext context)
+    {
+        OnRelease();
+    }
+   
+    
+    public void OnHold()
+    {
+        if(currentlyGrabbedObject != null)
+            currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+
+    }
+    public void OnRelease()
+    {
+        if (currentlyGrabbedObject != null)
+            currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+
+    }
         // Update is called once per frame
         void Update()
     {
@@ -52,25 +82,25 @@ public class Cam : MonoBehaviour
         raycast();
 
     }
-
+    
     public void raycast()
     {
         Ray ray = new Ray(transform.position, transform.forward);   
         if(Physics.Raycast(ray, out RaycastHit hitInfo, 10f))
         {
-           if(fireAction.IsPressed() && hitInfo.collider.tag == hitInfo.collider.name)
+           if( fireAction.IsPressed() && hitInfo.collider.tag == hitInfo.collider.name)
             {
                 Debug.Log("Hit" + hitInfo.collider.gameObject.name);
                 currentlyGrabbedObject = hitInfo.transform;
                 Vector3 targetPosition = ray.GetPoint(2.1f);
                 currentlyGrabbedObject.position = targetPosition;
-                currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+               // currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
             }
-            else
-            {
-                if(currentlyGrabbedObject != null)
-                    currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-            }
+            //else
+            //{
+            //    if(currentlyGrabbedObject != null)
+            //        currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+            //}
        
         
         }
