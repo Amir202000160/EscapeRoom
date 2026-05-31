@@ -10,16 +10,23 @@ public class Cam : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] float mouseSenstivity;
     InputAction LookAction;
-    InputAction fireAction;
+    public InputAction fireAction;
     [HideInInspector]
     public float angle;
-    float xRotate;
-    Ray ray;
+    public bool IsGrabbed = false;  
+    public static Cam Instance { get; private set; }
     private Transform currentlyGrabbedObject = null;
     
 
     private void OnEnable()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
         LookAction = InputSystem.actions.FindAction("Mouse");
         fireAction = InputSystem.actions.FindAction("Attack");
         MousueLocked();
@@ -47,12 +54,15 @@ public class Cam : MonoBehaviour
     {
         if(currentlyGrabbedObject != null)
             currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
-
+        IsGrabbed = true;
+        
     }
     public void OnRelease()
     {
         if (currentlyGrabbedObject != null)
             currentlyGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+     IsGrabbed = false; 
+     currentlyGrabbedObject = null;
 
     }
         // Update is called once per frame
