@@ -9,7 +9,7 @@ public class SceneLoaded : MonoBehaviour
     void Start()
     {
         string playerNamee = PlayerPrefs.GetString("PLayerName");
-        loadedName.text = "Welcome" + playerNamee;
+        loadedName.text = "Welcome " + playerNamee;
 
     }
 

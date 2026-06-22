@@ -5,20 +5,12 @@ using UnityEngine.UI;
 
 public class SavePlayerData : MonoBehaviour
 {
-   [SerializeField] public TMP_InputField playerName;
-    public GameObject txt;
+    public TMP_InputField playerName;
+    public GameObject Errortxt;
     void Start()
     {
-        txt.SetActive(false);
-
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Errortxt.SetActive(false);
+        playerName.text = null;
 
     }
 
@@ -27,16 +19,18 @@ public class SavePlayerData : MonoBehaviour
         if (string.IsNullOrEmpty(playerName.text))
 
         {
-            txt.SetActive(true);
+            Errortxt.SetActive(true);
+            Debug.Log("Player name is empty. Please enter a name.");
         }
         else
         {
             string playerNamee = playerName.text;
             PlayerPrefs.SetString("PLayerName", playerNamee);
             PlayerPrefs.Save();
-            SceneManager.LoadScene(1);
+            MainMENUManager.Instance.StartGame();
+
         }
-           
+
     }
 
 }

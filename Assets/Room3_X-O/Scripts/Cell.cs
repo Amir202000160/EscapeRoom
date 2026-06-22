@@ -18,6 +18,7 @@ public class Cell : MonoBehaviour
         {
             isX = true;
             HoldingtheSymbol(other.gameObject);
+            Debug.Log("X is in the cell");  
         }
     }
 
